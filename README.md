@@ -1,7 +1,7 @@
-LoveTest
+LoveGame
 ========
 
-<img src="https://raw.github.com/sordina/LoveTest/master/images/screenshot.png" alt="LoveTest in Action" />
+<img src="https://raw.github.com/sordina/LoveGame/master/images/screenshot.png" alt="LoveGame in Action" />
 
 A revolutionary new game!
 
