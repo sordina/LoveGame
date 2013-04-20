@@ -1,42 +1,5 @@
-function love.draw()
-	draw_player()
-	draw_bullets()
-end
-
-function draw_player()
-	love.graphics.push()
-	love.graphics.translate(x, y)
-	love.graphics.rotate(theta)
-	love.graphics.print("Hello -=>",0,0)
-	love.graphics.pop()
-end
-
-function draw_bullets()
-	for k,v in pairs(bullets) do
-		love.graphics.push()
-		love.graphics.translate(v['x'], v['y'])
-		love.graphics.rotate(v['theta'])
-		love.graphics.print(v['bullet'],0,0)
-		love.graphics.pop()
-	end
-end
-
-function love.mousepressed(x, y, button)
-	bling = love.audio.newSource("audio/music.wav")
-	love.audio.play(bling)
-end
-
-function love.keypressed(key,unikey)
-	if key == "escape" then
-		love.event.push("quit")
-	end
-
-	if unikey == 32 then -- space
-		table.insert(bullets, {x=x + math.cos(theta) * 50, y=y + math.sin(theta) * 50, theta=theta, bullet="=>"})
-		love.audio.rewind(gun)
-		love.audio.play(gun)
-	end
-end
+require("lib/drawing")
+require("lib/input")
 
 function delta(x1,y1,x2,y2)
 	dx = x1 - x2
