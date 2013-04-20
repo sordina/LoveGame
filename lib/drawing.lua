@@ -1,21 +1,14 @@
 function love.draw()
-	draw_player()
-	draw_bullets()
-	draw_baddies()
-end
-
-function draw_baddies()
-end
-
-function random_baddie()
-end
-
-function draw_player()
 	draw_thing(player)
+
+	draw_things(bullets)
+	draw_things(baddies)
 end
 
-function draw_bullets()
-	for k,v in pairs(bullets) do draw_thing(v) end
+-- Helpers
+
+function draw_things(items)
+	for k,v in pairs(items) do draw_thing(v) end
 end
 
 function draw_thing(thing)
