@@ -1,10 +1,17 @@
 function love.draw()
+	draw_player()
+	draw_bullets()
+end
+
+function draw_player()
 	love.graphics.push()
 	love.graphics.translate(x, y)
 	love.graphics.rotate(theta)
 	love.graphics.print("Hello -=>",0,0)
 	love.graphics.pop()
+end
 
+function draw_bullets()
 	for k,v in pairs(bullets) do
 		love.graphics.push()
 		love.graphics.translate(v['x'], v['y'])
@@ -63,13 +70,10 @@ end
 --
 function love.load()
 	init_player()
-	init_bullets()
-	background_music()
-	gun = love.audio.newSource("audio/gun.wav", "static")
-end
-
-function init_bullets()
 	bullets = {}
+	baddies = {}
+	init_background_music()
+	gun = love.audio.newSource("audio/gun.wav", "static")
 end
 
 function init_player()
@@ -80,7 +84,7 @@ function init_player()
 	dtheta = 3
 end
 
-function background_music()
+function init_background_music()
 	music = love.audio.newSource("audio/soundtrack01.wav")
 	music:setVolume(0.5) -- 90% of ordinary volume
 	music:setLooping(true)
