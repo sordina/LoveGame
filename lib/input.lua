@@ -9,7 +9,11 @@ function love.keypressed(key,unikey)
 	end
 
 	if unikey == 32 then -- space
-		table.insert(bullets, {x=x + math.cos(theta) * 50, y=y + math.sin(theta) * 50, theta=theta, bullet="=>"})
+		theta = player['theta']
+		x     = player['x']
+		y     = player['y']
+		table.insert(bullets, {x=x + math.cos(theta) * 50, y=y + math.sin(theta) *
+			50, theta=theta, display="=>", speed=100 + math.random() * 200})
 		love.audio.rewind(gun)
 		love.audio.play(gun)
 	end

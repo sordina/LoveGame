@@ -1,55 +1,35 @@
 require("lib/drawing")
 require("lib/input")
-
-function delta(x1,y1,x2,y2)
-	dx = x1 - x2
-	dy = y1 - y2
-	a  = math.pow(dx,2)
-	b  = math.pow(dy,2)
-	return math.sqrt(a+b)
-end
+require("lib/utils")
+require("lib/init")
+require("lib/baddies")
 
 function love.update(dt)
-	x = x + dt * speed * math.cos(theta)
-	y = y + dt * speed * math.sin(theta)
+	update_thing(player, dt)
+	update_bullets(dt)
 
+	if love.keyboard.isDown("left") then
+		rotate_thing(player, 0 - (dtheta * dt))
+	elseif love.keyboard.isDown("right") then
+		rotate_thing(player,     (dtheta * dt))
+	end
+end
+
+function update_bullets(dt)
 	for k,v in pairs(bullets) do
-		if delta(v['x'],v['y'],x,y) < 2000 then
-			v['x'] = v['x'] + dt * 2 * speed * math.cos(v['theta'])
-			v['y'] = v['y'] + dt * 2 * speed * math.sin(v['theta'])
+		if delta_thing(v,player) < 2000 then
+			update_thing(v, dt)
 		else
 			table.remove(bullets,k)
 		end
 	end
-
-	if love.keyboard.isDown("left") then
-		theta = theta - (dtheta * dt)
-	elseif love.keyboard.isDown("right") then
-		theta = theta + (dtheta * dt)
-	end
 end
 
--- Initialization Functions
---
-function love.load()
-	init_player()
-	bullets = {}
-	baddies = {}
-	init_background_music()
-	gun = love.audio.newSource("audio/gun.wav", "static")
+function rotate_thing(thing, angle)
+	thing['theta'] = thing['theta'] + angle
 end
 
-function init_player()
-	x      = 200
-	y      = 200
-	theta  = 0
-	speed  = 100
-	dtheta = 3
-end
-
-function init_background_music()
-	music = love.audio.newSource("audio/soundtrack01.wav")
-	music:setVolume(0.5) -- 90% of ordinary volume
-	music:setLooping(true)
-	love.audio.play(music)
+function update_thing(thing, dt)
+	thing['x'] = thing['x'] + dt * thing['speed'] * math.cos(thing['theta'])
+	thing['y'] = thing['y'] + dt * thing['speed'] * math.sin(thing['theta'])
 end
