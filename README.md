@@ -11,6 +11,12 @@ A revolutionary new game, programmed using the [love](love2d.org) framework.
 
 make play
 
+## Playing
+
+* Left, Right arrow keys to change direction
+* Space to shoot
+* Q to quit
+
 ## Why?
 
 Why not?
