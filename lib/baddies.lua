@@ -1,3 +1,7 @@
+function baddie_die(bad)
+	hud['score'] = math.floor( hud['score'] + 1000 / (time_playing + 100) )
+end
+
 function baddies_update_all(dt)
 	for k,v in pairs(baddies) do
 		baddies_update_single(v,dt)
@@ -12,14 +16,15 @@ function baddies_update_single(baddie,dt)
 	if dth ~= dth then dth = 0 end -- Test for NaN
 
 	local adjustment = 0.01 * math.sin( dth )
-	-- local randomness = math.random() * 0.2 - 0.1
+	local randomness = math.random() * 0.02 - 0.01
 
-	baddie['theta'] = baddie['theta'] + adjustment -- randomness + adjustment
+	baddie['theta'] = baddie['theta'] + adjustment + randomness
 end
 
 function random_baddie()
 	return {
 		speed   = 83,
+		color   = {red = 255, green = 50, blue = 50, alpha = 254},
 		theta   = 0,
 		x       = 130,
 		y       = 100 + 600 * math.random(),

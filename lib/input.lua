@@ -14,8 +14,15 @@ function love.keypressed(key,unikey)
 		local y     = player['y']
 		local r     = math.random()
 
-		table.insert(bullets, {x=x + math.cos(theta) * 50, y=y + math.sin(theta) *
-			50, size = 1 - 0.2 * r, theta=theta, display="PIW!!>", speed=100 + r * 200})
+		table.insert(bullets, {
+			x       = x + math.cos(theta) * 50,
+			y       = y + math.sin(theta) * 50,
+			color   = {red = 150, green = 150, blue = 255, alpha = 255},
+			size    = 1 - 0.2 * r,
+			theta   = theta,
+			display = "PIW!!>",
+			speed   = 100 + r * 200
+		})
 
 		love.audio.rewind(gun)
 		gun:setPitch(1 + r * 0.2)
