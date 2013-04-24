@@ -15,7 +15,8 @@ function init_player()
 		y       = 200,
 		theta   = 0,
 		speed   = 100,
-		display = "Hello -=>"
+		size    = 2,
+		display = "Player->"
 	}
 end
 

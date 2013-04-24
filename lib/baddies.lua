@@ -12,9 +12,9 @@ function baddies_update_single(baddie,dt)
 	if dth ~= dth then dth = 0 end -- Test for NaN
 
 	local adjustment = 0.01 * math.sin( dth )
-	local randomness = math.random() * 0.2 - 0.1
+	-- local randomness = math.random() * 0.2 - 0.1
 
-	baddie['theta'] = baddie['theta'] + randomness + adjustment
+	baddie['theta'] = baddie['theta'] + adjustment -- randomness + adjustment
 end
 
 function random_baddie()
@@ -23,7 +23,7 @@ function random_baddie()
 		theta   = 0,
 		x       = 130,
 		y       = 100 + 600 * math.random(),
-		display = "XD>"
+		display = "BAD-GUY>"
 	}
 end
 

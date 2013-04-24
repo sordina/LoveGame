@@ -15,6 +15,7 @@ function draw_thing(thing)
 	love.graphics.push()
 		love.graphics.translate(thing['x'], thing['y'])
 		love.graphics.rotate(thing['theta'])
+		love.graphics.scale(thing['size'], thing['size'])
 		love.graphics.print(thing['display'],0,0)
 	love.graphics.pop()
 end

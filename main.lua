@@ -3,6 +3,7 @@ require("lib/input")
 require("lib/utils")
 require("lib/init")
 require("lib/baddies")
+require("lib/collision")
 
 function love.update(dt)
 	move_thing(player, dt)
@@ -11,6 +12,7 @@ function love.update(dt)
 
 	filter_bullets()
 	baddies_update_all(dt)
+	collisions_update_all()
 
 	if love.keyboard.isDown("left") then
 		rotate_thing(player, 0 - (dtheta * dt))

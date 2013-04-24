@@ -1,5 +1,5 @@
 function love.mousepressed(x, y, button)
-	bling = love.audio.newSource("audio/music.wav")
+	local bling = love.audio.newSource("audio/music.wav")
 	love.audio.play(bling)
 end
 
@@ -9,12 +9,16 @@ function love.keypressed(key,unikey)
 	end
 
 	if unikey == 32 then -- space
-		theta = player['theta']
-		x     = player['x']
-		y     = player['y']
+		local theta = player['theta']
+		local x     = player['x']
+		local y     = player['y']
+		local r     = math.random()
+
 		table.insert(bullets, {x=x + math.cos(theta) * 50, y=y + math.sin(theta) *
-			50, theta=theta, display="=>", speed=100 + math.random() * 200})
+			50, size = 1 - 0.2 * r, theta=theta, display="PIW!!>", speed=100 + r * 200})
+
 		love.audio.rewind(gun)
+		gun:setPitch(1 + r * 0.2)
 		love.audio.play(gun)
 	end
 end
