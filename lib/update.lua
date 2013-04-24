@@ -4,6 +4,7 @@ function love.update(dt)
 	time_playing = time_playing + dt
 
 	move_thing(player,      dt)
+
 	move_things(bullets,    dt)
 	move_things(baddies,    dt)
 	move_things(explosions, dt)

@@ -6,8 +6,8 @@ function draw_hud()
 end
 
 function hud_build(inhud)
-	return ("Score  - " .. hud['score'] .. "\n" ..
-	        "Health - " .. player['health'])
+	return ("Score   " .. hud['score'] .. "\n" ..
+	        "Health  " .. player['health'])
 end
 
 function hud_init()

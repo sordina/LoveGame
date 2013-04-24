@@ -1,5 +1,8 @@
 function baddie_die(bad)
 	hud['score'] = math.floor( hud['score'] + 1000 / (time_playing + 100) )
+	if(#baddies == 0) then
+		win()
+	end
 end
 
 function baddies_update_all(dt)
@@ -34,6 +37,10 @@ end
 
 function baddies_random_set()
 	return { random_baddie(),
+	         random_baddie(),
+	         random_baddie(),
+	         random_baddie(),
+	         random_baddie(),
 	         random_baddie(),
 	         random_baddie(),
 	         random_baddie(),

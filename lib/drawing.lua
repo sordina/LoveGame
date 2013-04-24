@@ -1,10 +1,10 @@
 function love.draw()
 	draw_hud()
 
-
 	draw_things(explosions)
 	draw_things(bullets)
 	draw_things(baddies)
+
 	draw_thing(player)
 end
 
