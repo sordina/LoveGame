@@ -7,7 +7,8 @@ end
 
 function hud_build(inhud)
 	return ("Score   " .. hud['score'] .. "\n" ..
-	        "Health  " .. player['health'])
+	        "Health  " .. player['health'] .. "\n" ..
+	        "Evil    " .. baddie_evil_count)
 end
 
 function hud_init()

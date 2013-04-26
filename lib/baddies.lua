@@ -1,8 +1,11 @@
 baddie_evil_count = 0
 
-function baddie_die(bad) if string.find(bad.display, "E") then
-		baddie_evil_count = baddie_evil_count - 1
-		if baddie_evil_count == 0 then
+function baddie_die(bad)
+	if string.find(bad.display, "E") then
+		if baddie_evil_count > 0 then
+			baddie_evil_count = baddie_evil_count - 1
+		end
+		if baddie_evil_count < 1 then
 			music_change("audio/soundtrack01.wav")
 		end
 	end
@@ -14,7 +17,7 @@ function baddie_die(bad) if string.find(bad.display, "E") then
 		table.insert(baddies,random_baddie(2, 'EVIL(1)>', ecol))
 		table.insert(baddies,random_baddie(3, 'EVIL(2)>', ecol))
 		baddie_evil_count = baddie_evil_count + 2
-		music_change("audio/evil.wav")
+		music_change("audio/evil.wav", 1 + (0.1 * (baddie_evil_count - 2)))
 	end
 
 	if(#baddies == 0) then
@@ -47,7 +50,7 @@ end
 
 function random_baddie(size,display,color)
 	return {
-		speed   = 83,
+		speed   = 83 + 100 * math.random(),
 		size    = size or (0.8 + math.random() * 0.4),
 		color   = color or {red = 255, green = 50, blue = 50, alpha = 254},
 		theta   = math.pi * 2 * math.random(),
