@@ -22,6 +22,7 @@ function bullet_explode_part(bul)
 		size    = 1 + r,
 		theta   = math.random() * math.pi * 2,
 		display = "!!!BOOM!!!",
+		random  = 2,
 		speed   = 30 + r * 40
 	})
 end

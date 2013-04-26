@@ -1,10 +1,19 @@
-function baddie_die(bad)
+baddie_evil_count = 0
+
+function baddie_die(bad) if string.find(bad.display, "E") then
+		baddie_evil_count = baddie_evil_count - 1
+		if baddie_evil_count == 0 then
+			music_change("audio/soundtrack01.wav")
+		end
+	end
+
 	hud['score'] = math.floor( hud['score'] + 1000 / (time_playing + 100) )
 
-	if(math.random() < 0.02) then
+	if(math.random() < 0.12) then
 		local ecol = {red = 12, green = 255, blue = 48, alpha = 255}
-		table.insert(baddies,random_baddie(2, 'EVIL1:>', ecol))
-		table.insert(baddies,random_baddie(2, 'EVIL2:>', ecol))
+		table.insert(baddies,random_baddie(2, 'EVIL(1)>', ecol))
+		table.insert(baddies,random_baddie(3, 'EVIL(2)>', ecol))
+		baddie_evil_count = baddie_evil_count + 2
 		music_change("audio/evil.wav")
 	end
 

@@ -48,6 +48,7 @@ function move_things(items, dt)
 end
 
 function move_thing(thing, dt)
-	thing['x'] = thing['x'] + dt * thing['speed'] * math.cos(thing['theta'])
-	thing['y'] = thing['y'] + dt * thing['speed'] * math.sin(thing['theta'])
+	local r = thing.random or 0
+	thing['x'] = thing['x'] + dt * thing['speed'] * math.cos(thing['theta']) + r * (math.random() - 0.5)
+	thing['y'] = thing['y'] + dt * thing['speed'] * math.sin(thing['theta']) + r * (math.random() - 0.5)
 end
