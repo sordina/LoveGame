@@ -1,5 +1,7 @@
-LoveGame
-========
+Rocketext
+=========
+
+Treading the Fuzzy Line between Awesome and Retarded
 
 <img src="https://raw.github.com/sordina/LoveGame/master/images/screenshot.png" alt="LoveGame in Action" />
 
