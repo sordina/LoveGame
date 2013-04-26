@@ -14,7 +14,10 @@ function draw_background(level,px,py)
 		y = py + 10 * (level + 1) * math.cos(love.timer.getTime()/(level + 1))}
 
 	love.graphics.push()
-		love.graphics.setColor(c.red, c.green, c.blue, c.alpha)
+		love.graphics.setColor(
+			c.red, c.green, c.blue,
+			c.alpha / (baddie_evil_count + 1)
+			)
 		love.graphics.circle( "fill", cx.x, cx.y, level * 100, 35 )
 	love.graphics.pop()
 
