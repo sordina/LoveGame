@@ -17,19 +17,13 @@ function lose()
 end
 
 function win_screen_update(dt)
-	love.audio.stop(music)
-	ending_music = love.audio.newSource("audio/Win.wav")
-	ending_music:setVolume(0.5)
-	love.audio.play(ending_music)
+	music_change("audio/Win.wav")
 	function love.update(dt)
 	end
 end
 
 function lose_screen_update(dt)
-	love.audio.stop(music)
-	ending_music = love.audio.newSource("audio/Lose.wav")
-	ending_music:setVolume(0.5)
-	love.audio.play(ending_music)
+	music_change("audio/Lose.wav")
 	function love.update(dt)
 	end
 end

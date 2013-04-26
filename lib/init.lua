@@ -18,8 +18,5 @@ function love.load()
 end
 
 function init_background_music()
-	music = love.audio.newSource("audio/soundtrack01.wav")
-	music:setVolume(0.5)
-	music:setLooping(true)
-	love.audio.play(music)
+	music_change("audio/soundtrack01.wav")
 end

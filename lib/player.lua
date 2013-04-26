@@ -18,6 +18,22 @@ function player_hit(bad)
 	player_impact:setPitch(1 + math.random() * 0.2)
 	love.audio.play(player_impact)
 
+	local x = player.x
+	local y = player.y
+	local r = math.random()
+
+	table.insert(explosions, {
+		x       = x,
+		y       = y,
+		color   = {red = 15, green = 14, blue = 255, alpha = 244},
+		center  = {x = x, y = y},
+		size    = 1 - r,
+		theta   = math.random() * math.pi * 2,
+		display = "): OUCH :(",
+		speed   = 30 + r * 40
+	})
+
+
 	if(player['health'] < 0) then
 		lose()
 	end
