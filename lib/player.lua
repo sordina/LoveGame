@@ -22,7 +22,7 @@ function player_recenter()
 end
 
 function player_hit(bad)
-	player['health'] = player['health'] - 1
+	player['health'] = player['health'] - 2
 	love.audio.rewind(player_impact)
 	player_impact:setPitch(1 + math.random() * 0.2)
 	love.audio.play(player_impact)

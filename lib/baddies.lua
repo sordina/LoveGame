@@ -14,8 +14,8 @@ function baddie_die(bad)
 
 	if(math.random() < 0.12) then
 		local ecol = {red = 12, green = 255, blue = 48, alpha = 255}
-		table.insert(baddies,random_baddie(2, 'EVIL(1)>', ecol))
-		table.insert(baddies,random_baddie(3, 'EVIL(2)>', ecol))
+		table.insert(baddies,random_baddie(2, 'EVIL>', ecol))
+		table.insert(baddies,random_baddie(3, 'EVIL>>', ecol))
 		baddie_evil_count = baddie_evil_count + 2
 		music_change("audio/evil.wav", 1 + (0.1 * (baddie_evil_count - 2)))
 	end
@@ -36,13 +36,14 @@ function baddies_update_all(dt)
 end
 
 function baddies_update_single(baddie,dt)
-	local delx  = baddie['x'] - player['x']
-	local dely  = baddie['y'] - player['y']
+	-- Where they think you will be
+	local delx = baddie['x'] - player['x'] - math.random() * 2 * math.cos(player.theta)
+	local dely = baddie['y'] - player['y'] - math.random() * 2 * math.sin(player.theta)
 
 	local dth = baddie['theta'] - math.atan2( dely, delx )
 	if dth ~= dth then dth = 0 end -- Test for NaN
 
-	local adjustment = 0.01 * math.sin( dth )
+	local adjustment = 0.02 * math.sin( dth )
 	local randomness = math.random() * 0.02 - 0.01
 
 	baddie['theta'] = baddie['theta'] + adjustment + randomness
@@ -60,17 +61,43 @@ function random_baddie(size,display,color)
 	}
 end
 
-function baddies_random_set()
-	return { random_baddie(),
-	         random_baddie(), random_baddie(), random_baddie(), random_baddie(),
-	         random_baddie(), random_baddie(), random_baddie(), random_baddie(), random_baddie(),
-	         random_baddie(), random_baddie(), random_baddie(), random_baddie(), random_baddie(),
-	         random_baddie(), random_baddie(), random_baddie(), random_baddie(), random_baddie(),
-	         random_baddie(), random_baddie(), random_baddie(), random_baddie(), random_baddie(),
-	         random_baddie(), random_baddie(), random_baddie(), random_baddie(), random_baddie(),
-	         random_baddie(), random_baddie(), random_baddie(), random_baddie(), random_baddie(),
-	         random_baddie(), random_baddie(), random_baddie(), random_baddie(), random_baddie(),
-	         random_baddie(), random_baddie(), random_baddie(), random_baddie(), random_baddie(),
-	         random_baddie()
-	}
+local next_step = 0
+
+function baddies_add()
+	if time_playing < 22 and (time_playing * 2 + next_step) > #baddies then
+		next_step = 2 * math.random()
+
+		local bad = random_baddie()
+		table.insert(baddies, bad)
+
+		local displays     = {"NICE", "YEAH!", "AWESOME!!!", "Totally Sweet BRO"}
+		local display_word = displays[1 + math.floor(math.random() * 4)]
+
+		for unused = 0, 20, 1 do
+			spawn_explosion(bad, display_word)
+		end
+
+		love.audio.rewind(audio_bling)
+		audio_bling:setPitch(1 + math.random() * 0.2)
+		love.audio.play(audio_bling)
+	end
+end
+
+
+function spawn_explosion(bad, display_word)
+	local r = math.random() / 2
+
+	local x = bad['x']
+	local y = bad['y']
+
+	table.insert(explosions, {
+		x       = x,
+		y       = y,
+		color   = {red = 0, green = 0, blue = 0, alpha = 98},
+		center  = {x = x, y = y},
+		size    = 1 + r,
+		theta   = math.random() * math.pi * 2,
+		display = display_word,
+		speed   = 50 + r * 100
+	})
 end

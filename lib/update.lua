@@ -11,6 +11,7 @@ function love.update(dt)
 
 	filter_bullets()
 	filter_explosions()
+	baddies_add()
 	baddies_update_all(dt)
 	collisions_update_all()
 	player_recenter()
