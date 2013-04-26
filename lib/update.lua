@@ -13,6 +13,7 @@ function love.update(dt)
 	filter_explosions()
 	baddies_update_all(dt)
 	collisions_update_all()
+	player_recenter()
 
 	if love.keyboard.isDown("left") then
 		rotate_thing(player, 0 - (dtheta * dt))

@@ -12,6 +12,15 @@ function init_player()
 	}
 end
 
+function player_recenter()
+	local sw = love.graphics.getWidth()
+	local sh = love.graphics.getHeight()
+	if player.x < 0 or player.y < 0 or player.x > sw or player.y > sh then
+		player.x = sw / 2
+		player.y = sh / 2
+	end
+end
+
 function player_hit(bad)
 	player['health'] = player['health'] - 1
 	love.audio.rewind(player_impact)
