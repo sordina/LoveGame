@@ -1,7 +1,7 @@
 Rocketext
 =========
 
-Download available [HERE!](http://rocketext.s3.amazonaws.com/RockeText.dmg)
+Download for OS X available [HERE!](http://rocketext.s3.amazonaws.com/RockeText.dmg)
 
 Treading the Fuzzy Line between Awesome and Retarded
 
