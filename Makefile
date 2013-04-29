@@ -21,3 +21,4 @@ dist:
 	cp  -r /Applications/love.app ../RockeText.app
 	zip -r ../RockeText.app/Contents/Resources/RockeText.love *
 	cp     bundle/replacement.plist ../RockeText.app/Contents/Info.plist
+	cp     images/RockeText.icns  ../RockeText.app/Contents/Resources/Love.icns
