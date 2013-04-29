@@ -17,13 +17,13 @@ function lose()
 end
 
 function win_screen_update(dt)
-	music_change("audio/Win.wav")
+	music_change("audio/win.wav")
 	function love.update(dt)
 	end
 end
 
 function lose_screen_update(dt)
-	music_change("audio/Lose.wav")
+	music_change("audio/lose.wav")
 	function love.update(dt)
 	end
 end
