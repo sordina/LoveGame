@@ -17,7 +17,7 @@ Why not?
 
 ## Playing
 
-* Left, Right arrow keys to change direction
+* (Left or s), (Right or f) arrow keys to change direction anti-clockwise and clockwise respectively.
 * Space to shoot
 * Q to quit
 

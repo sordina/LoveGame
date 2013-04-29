@@ -16,9 +16,9 @@ function love.update(dt)
 	collisions_update_all()
 	player_recenter()
 
-	if love.keyboard.isDown("left") then
+	if love.keyboard.isDown("left") or love.keyboard.isDown("s") then
 		rotate_thing(player, 0 - (dtheta * dt))
-	elseif love.keyboard.isDown("right") then
+	elseif love.keyboard.isDown("right") or love.keyboard.isDown("f") then
 		rotate_thing(player,     (dtheta * dt))
 	end
 end
