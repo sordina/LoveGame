@@ -19,5 +19,5 @@ dist:
 	@echo "TODO: Create a DMG - http://stackoverflow.com/questions/96882/how-do-i-create-a-nice-looking-dmg-for-mac-os-x-using-command-line-tools"
 	rm  -r ../RockeText.app
 	cp  -r /Applications/love.app ../RockeText.app
-	zip -r ../RockeText.love *
+	zip -r ../RockeText.app/Contents/Resources/RockeText.love *
 	cp     bundle/replacement.plist ../RockeText.app/Contents/Info.plist
