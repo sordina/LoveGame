@@ -26,6 +26,7 @@ function love.keypressed(key,unikey)
 
 		love.audio.rewind(gun)
 		gun:setPitch(1 + r * 0.2)
+		gun:setVolume(0.7)
 		love.audio.play(gun)
 	end
 end
