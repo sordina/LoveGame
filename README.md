@@ -1,4 +1,4 @@
-Rocketext
+RockeText
 =========
 
 Download for OS X available [HERE!](http://rocketext.s3.amazonaws.com/RockeText.dmg)
