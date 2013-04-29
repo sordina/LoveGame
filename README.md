@@ -22,3 +22,7 @@ make play
 ## Why?
 
 Why not?
+
+## Icons
+
+Created with http://www.img2icnsapp.com/
