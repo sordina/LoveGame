@@ -16,6 +16,8 @@ play:
 
 dist:
 	@echo "Creating a distribution file at ../RockeText.app"
-	cp -r  /Applications/love.app ../RockeText.app
-	cp -r  audio images lib main.lua ../RockeText.app/Contents/Resources/
-	sed -i ../RockeText.app/Contents/Info.plist
+	@echo "TODO: Create a DMG - http://stackoverflow.com/questions/96882/how-do-i-create-a-nice-looking-dmg-for-mac-os-x-using-command-line-tools"
+	rm  -r ../RockeText.app
+	cp  -r /Applications/love.app ../RockeText.app
+	zip -r ../RockeText.love *
+	cp     bundle/replacement.plist ../RockeText.app/Contents/Info.plist
