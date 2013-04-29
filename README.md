@@ -11,9 +11,9 @@ A revolutionary new game, programmed using the [love](love2d.org) framework.
 
 [Video on YouTube](http://youtu.be/qZxG9MTzfvY)
 
-## Running
+## Why?
 
-make play
+Why not?
 
 ## Playing
 
@@ -21,10 +21,19 @@ make play
 * Space to shoot
 * Q to quit
 
-## Why?
+# Development
 
-Why not?
+This section relates to development of the game.
+
+## Running
+
+    make play
 
 ## Icons
 
 Created with http://www.img2icnsapp.com/
+
+## Distribution
+
+    make dist
+    make upload
